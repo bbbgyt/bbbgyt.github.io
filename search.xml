@@ -219,6 +219,18 @@
       </tags>
   </entry>
   <entry>
+    <title>事件冒泡、事件捕获和事件委托</title>
+    <url>/2024/02/26/JS/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E3%80%81%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</url>
+    <content><![CDATA[<p>这类事件通常使用addEventListener来实现事件触发。</p>
+<p>事件冒泡字面意思就是当监听一个事件或给事件添加一个点击事件 事件从里向外层层冒泡 addEventListener第三个参数为一个布尔值 不传默认为false 事件在冒泡阶段进行处理 如果为true 则表示事件早捕获阶段进行处理，事件捕获表现为从外到里进行事件捕获</p>
+<p>事件委托是一种常用的优化手段，用于管理大量相识元素上的事件处理</p>
+<p>通常是利用<strong>事件冒泡机制</strong>来处理事件 将事件处理绑定到父元素上，并通过事件对象的target属性来判断具体触发的子元素</p>
+]]></content>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>事件循环</title>
     <url>/2024/02/26/JS/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</url>
     <content><![CDATA[<p>javaScript是一门<strong>解释性语言</strong></p>
@@ -269,18 +281,6 @@
       </tags>
   </entry>
   <entry>
-    <title>事件冒泡、事件捕获和事件委托</title>
-    <url>/2024/02/26/JS/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E3%80%81%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</url>
-    <content><![CDATA[<p>这类事件通常使用addEventListener来实现事件触发。</p>
-<p>事件冒泡字面意思就是当监听一个事件或给事件添加一个点击事件 事件从里向外层层冒泡 addEventListener第三个参数为一个布尔值 不传默认为false 事件在冒泡阶段进行处理 如果为true 则表示事件早捕获阶段进行处理，事件捕获表现为从外到里进行事件捕获</p>
-<p>事件委托是一种常用的优化手段，用于管理大量相识元素上的事件处理</p>
-<p>通常是利用<strong>事件冒泡机制</strong>来处理事件 将事件处理绑定到父元素上，并通过事件对象的target属性来判断具体触发的子元素</p>
-]]></content>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>原型和原型链</title>
     <url>/2024/02/26/JS/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
     <content><![CDATA[<p>显式原型 prototype</p>
@@ -294,7 +294,7 @@
 <p>构造函数的prototype.__proto__指向其对象的构造函数Object.prototype</p>
 <p>构造函数Object.prototype.__proto 指向null</p>
 <p>当寻找一个对象属性时，先从对象自身查找，直到找到null</p>
-<p><font style="color:rgb(77, 77, 77);"><strong>proto</strong> 读作“</font><strong><font style="color:rgb(77, 77, 77);">dunder proto</font></strong><font style="color:rgb(77, 77, 77);">”，“</font><strong><font style="color:rgb(77, 77, 77);">double underscore proto</font></strong><font style="color:rgb(77, 77, 77);">”的缩写。并且它前后两边 分别是 两个 “_”(下划线)。</font></p>
+<p><strong>proto</strong> 读作“<strong>dunder proto</strong>”，“<strong>double underscore proto</strong>”的缩写。并且它前后两边 分别是 两个 “_”(下划线)。</p>
 <p>假设有一个对象 obj 其是由构造函数 function test(name) { this.name&#x3D;name } 使用关键字new出来 这时称这个对象为实例化对象obj </p>
 <p>其原型链如下：</p>
 <p>obj.<strong>proto</strong>–&gt;test.prototype.<strong>proto</strong>(obj对象的构造函数)–&gt; Object.prototype.__proto –&gt; null</p>
@@ -356,30 +356,20 @@
 <p>用来判断引用类型，原理是检测构造函数的prototype是否在某个实例对象的原型链上</p>
 <p>⚠️ 如果判断基础数据类型都返回false</p>
 <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">object <span class="keyword">instanceof</span> constructor</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">6</span> <span class="keyword">instanceof</span> <span class="title class_">Number</span>);                    <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> <span class="keyword">instanceof</span> <span class="title class_">Boolean</span>);                <span class="comment">// false </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;nanjiu&#x27;</span> <span class="keyword">instanceof</span> <span class="title class_">String</span>);                <span class="comment">// false  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([] <span class="keyword">instanceof</span> <span class="title class_">Array</span>);                    <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;&#125; <span class="keyword">instanceof</span> <span class="title class_">Function</span>);       <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; <span class="keyword">instanceof</span> <span class="title class_">Object</span>);                   <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
-
-<p><font style="color:rgb(25, 27, 31);">⚠️</font><font style="color:rgb(25, 27, 31);">null和undefined是无效的对象，所以他们不会有constructor属性</font></p>
-<h3 id="77830977">**<font style="color:rgb(25, 27, 31);">Object.prototype.toString.call()</font>**</h3>
-<font style="color:rgb(25, 27, 31);">toString() 是 Object 的原型方法，调用该方法，默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。</font>
-
-<p><font style="color:rgb(25, 27, 31);">对于 Object 对象，直接调用 toString() 就能返回 [object Object] 。而对于其他对象，则需要通过 call &#x2F; apply 来调用才能返回正确的类型信息。</font></p>
+<p>⚠️null和undefined是无效的对象，所以他们不会有constructor属性</p>
+<p><strong>Object.prototype.toString.call()</strong></p>
+<p>toString() 是 Object 的原型方法，调用该方法，默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。</p>
+<p>对于 Object 对象，直接调用 toString() 就能返回 [object Object] 。而对于其他对象，则需要通过 call &#x2F; apply 来调用才能返回正确的类型信息。</p>
 <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="string">&#x27;&#x27;</span>) ;   <span class="comment">// [object String]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="number">1</span>) ;    <span class="comment">// [object Number]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">true</span>) ; <span class="comment">// [object Boolean]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="title class_">Symbol</span>()); <span class="comment">//[object Symbol]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">undefined</span>) ; <span class="comment">// [object Undefined]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="literal">null</span>) ; <span class="comment">// [object Null]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Function</span>()) ; <span class="comment">// [object Function]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()) ; <span class="comment">// [object Date]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>([]) ; <span class="comment">// [object Array]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">RegExp</span>()) ; <span class="comment">// [object RegExp]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Error</span>()) ; <span class="comment">// [object Error]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="variable language_">document</span>) ; <span class="comment">// [object HTMLDocument]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="variable language_">window</span>) ; <span class="comment">//[object global] window 是全局对象 global 的引用</span></span><br></pre></td></tr></table></figure></div>
 
-<h3 id="dzqpy">constructor(构造函数)</h3>
-函数在被定义时JS引擎会自动给函数加上一个prototype属性，属性上有constructor并指向该函数
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.nlark.com/yuque/0/2024/png/1421424/1732538357211-e61d1223-5d31-46f9-8803-aa315fa3f5a8.png"
-                     
-                ></p>
-<p><font style="color:rgb(25, 27, 31);">当执行 </font><code>&lt;font style=&quot;color:rgb(25, 27, 31);background-color:rgb(248, 248, 250);&quot;&gt;let f = new F()&lt;/font&gt;</code><font style="color:rgb(25, 27, 31);">时，F被当成了构造函数，f是F的实例对象，此时F原型上的constructor属性传递到了f上，所以</font><code>&lt;font style=&quot;color:rgb(25, 27, 31);background-color:rgb(248, 248, 250);&quot;&gt;f.constructor===F&lt;/font&gt;</code></p>
+<p><strong>constructor(构造函数)</strong></p>
+<p>函数在被定义时JS引擎会自动给函数加上一个prototype属性，属性上有constructor并指向该函数<br>当执行let f &#x3D; new F()时，F被当成了构造函数，f是F的实例对象，此时F原型上的constructor属性传递到了f上，所以f.constructor&#x3D;&#x3D;&#x3D;F</p>
 <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">F</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="title function_">F</span>()</span><br><span class="line"></span><br><span class="line">f.<span class="property">constructor</span> === F <span class="comment">// true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Number</span>(<span class="number">1</span>).<span class="property">constructor</span> === <span class="title class_">Number</span> <span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Function</span>().<span class="property">constructor</span> === <span class="title class_">Function</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span>.<span class="property">constructor</span> === <span class="title class_">Boolean</span> <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span>.<span class="property">constructor</span> === <span class="title class_">String</span> <span class="comment">// true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>().<span class="property">constructor</span> === <span class="title class_">Date</span> <span class="comment">// true</span></span><br><span class="line">  [].<span class="property">constructor</span> === <span class="title class_">Array</span></span><br></pre></td></tr></table></figure></div>
 
-<p><strong><font style="color:rgb(25, 27, 31);">⚠️</font>****<font style="color:rgb(25, 27, 31);">注意：</font></strong></p>
+<p><strong>⚠️****注意：</strong></p>
 <ul>
-<li><font style="color:rgb(25, 27, 31);">null和undefined是无效的对象，所以他们不会有constructor属性</font></li>
-<li><font style="color:rgb(25, 27, 31);">函数的construct是不稳定的，主要是因为开发者可以重写prototype，原有的construction引用会丢失，constructor会默认为Object</font></li>
+<li>null和undefined是无效的对象，所以他们不会有constructor属性</li>
+<li>函数的construct是不稳定的，主要是因为开发者可以重写prototype，原有的construction引用会丢失，constructor会默认为Object</li>
 </ul>
 <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">F</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">F.<span class="property"><span class="keyword">prototype</span></span> = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="title function_">F</span>()</span><br><span class="line">f.<span class="property">constructor</span> === F <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(f.<span class="property">constructor</span>) <span class="comment">//function Object()&#123;..&#125;</span></span><br></pre></td></tr></table></figure></div>
 
